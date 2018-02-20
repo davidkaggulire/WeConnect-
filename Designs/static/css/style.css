@@ -1,0 +1,26 @@
+.first{
+    display: inline;
+}
+/* 
+.elementdiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} */
+
+.loginInfo{
+    padding-left: 0dp;
+    margin-left: 0dp;
+}
+
+/* .flexspan{
+    display:flex;
+    flex-direction: row;
+    padding: 10px;
+
+} */
+/* 
+.verticalDirection{
+    display: flex;
+    flex-direction: row;
+} */
