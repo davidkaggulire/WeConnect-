@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>WeConnect App</title>
+        <meta name="description" content="We Connect">
+        <meta name="author" content="David">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">WeConnect</a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only"></span></a>
+                    <a class="nav-item nav-link" href="signup.html">Signup</a>
+                    <a class="nav-item nav-link" href="login.html">Login</a>
+                    <a class="nav-item nav-link" href="registerbusiness.html">Register Business</a>
+                </div>
+            </div>
+        </nav>
+
+    </head>
+
+    <body>
+        <div class="container">
+            <form method="POST">
+                <h1>Signup</h1>
+
+                <div class="form-group row">
+                    <label for="Firstname"><b>First name</b></label>
+                    <span class="flexspan"></span>
+                    <div class="col-10"><input type="text" name="firstname" required></div>
+                </div>
+              
+                <div class="form-group row">
+                    <label for="Lastname"><b>Last name</b></label>
+                    <span class="flexspan"></span>
+                    <div class="col-10"><input type="text" name="Lastname" required></div>
+                </div>
+
+                <div class="form-group row"
+                    <label for="username"><b>User name</b></label>
+                    <span class="flexspan"></span>
+                    <div class="col-10"><input type="text" name="username" required></div>
+                </div>
+
+                <div class="form-group row">
+                    <label ><b>Password</b></label>
+                    <span class="flexspan"></span>
+                    <div class="col-10"><input type="password" placeholder="Enter Password" name="password" required></div>
+                </div>
+
+                <div class="form-group row">
+                        <label ><b>Confirm Password</b></label>
+                        <span class="flexspan"></span>
+                        <div class="col-10"><input type="password" placeholder="Confirm Password" name="password" required></div>
+                </div>
+
+                <div class="form-group row">
+                    <label ><b>Email</b></label>
+                    <span class="flexspan"></span>
+                    <div class="col-10"><input type="email" placeholder="example@email.com" name="email" required></div>
+                </div>
+
+                <div class="form-group row">
+                    <label><b>Gender</b></label>
+                    <span class="flexspan"></span>
+                    <input type="radio" id="maleButton" name="gender" value="male">Male<br>
+                    <span class="flexspan"></span>
+                    <input type="radio" id="femaleButton" name="gender" value="Female">Female<br>
+                </div>
+                   
+                
+
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-submit">Signup</button>
+                </div>
+
+              
+            </form>
+        </div>
+        <script src="js/bootstrap.js"></script>
+    </body>
+
+</html>
