@@ -10,10 +10,10 @@ Project source can be downloaded from https://github.com/davidkaggulire/WeConnec
 
 **Authors and Contributors**
 ---
-David Kaggulire
-Collins Abitekaniza
-Peter Walugembe
-Alvin Taremwa
-Eric Malaba
-Harriet Ayugi
-Romin Kayira
+David Kaggulire,
+Collins Abitekaniza,
+Peter Walugembe,
+Alvin Taremwa,
+Eric Malaba,
+Harriet Ayugi,
+Romin Kayira,
