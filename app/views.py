@@ -2,7 +2,7 @@
 
 from app import *
 from flask import request, jsonify
-from app.models import User
+from app.models import User, Business, Signup, Reviews, users
 
 @app.route('/')
 @app.route('/home', methods=['GET','POST'])
@@ -11,21 +11,14 @@ def home():
 
 @app.route('/api/auth/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        newUser = User(username = str(request.data.get('username'), password = str(request.data.get('password'))))
-        response = jsonify({'username': newUser.username})
-        response.status_code = 200
-        return response
-
-@app.route('/api/auth/login', methods=['POST'])
-def login():
     pass
-    # user = request.get_json()
-    # userlogin = {}
-    # userlogin['username'] = user['name']
-    # userlogin['password'] = user['password']
-    # return jsonify(userlogin)
-
+    
+@app.route('/api/auth/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        user = users[].username
+        return str(user)
+   
 @app.route('/api/auth/logout', methods=['GET', 'POST'])
 def logout():
     pass
