@@ -1,0 +1,5 @@
+# ignore directories
+/venv/
+/__pycache__/
+/.vscode/
+/.idea/
