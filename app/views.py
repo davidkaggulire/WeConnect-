@@ -12,15 +12,15 @@ def home():
 @app.route('/api/auth/register', methods=['POST'])
 def register():
     if request.method == "POST":
-        test_user = request.get_json()
-        id = test_user['id']
-        firstname = test_user['firstname']
-        lastname = test_user['lastname']
-        username = test_user['username']
-        password = test_user['password']
-        email = test_user['email']
-        phonenumber = test_user['phonenumber']
-        gender = test_user['gender']
+        test_user = request.get_json(force=True)
+        id = test_user.get('id')
+        firstname = test_user.get('firstname')
+        lastname = test_user.get('lastname')
+        username = test_user.get('username')
+        password = test_user.get('password')
+        email = test_user.get('email')
+        phonenumber = test_user.get('phonenumber')
+        gender = test_user.get('gender')
 
         if id and username:
             newUser = Signup(id=id, firstname=firstname, lastname=lastname, username=username, password=password, email=email, phonenumber=phonenumber, gender=gender )
@@ -88,15 +88,12 @@ def specific_business():
         }
         return newBusiness
 
-        else:
-            return "fail"
     elif request.method == 'POST':
         pass
-    
+
     elif request.method == 'PUT':
         pass
-
-    elif request.method == 'DELETE':
+    else request.method == 'DELETE':
         pass
 
 
