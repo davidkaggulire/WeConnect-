@@ -30,13 +30,14 @@ class Business(object):
         return "Business(id='%s')"%self.id
 
 class Signup(object):
-    def __init__(self, id, firstname, lastname, username, password, email, gender):
+    def __init__(self, id, firstname, lastname, username, password, email, phonenumber, gender):
         self.id = id
         self.firstname = firstname
         self.lastname = lastname
         self.username = username
         self.password = password 
-        self.email = email
+        self.email = email,
+        self.phonenumber = phonenumber
         self.gender = gender
 
     def __str__(self):
