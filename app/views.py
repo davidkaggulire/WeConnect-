@@ -2,7 +2,7 @@
 
 from app import app
 from flask import request, jsonify, make_response, session
-from app.models import Login, Business, Signup, Reviews
+from app.models import User, Business, Signup
 
 @app.route('/')
 @app.route('/home', methods=['GET','POST'])
@@ -53,8 +53,8 @@ def login():
     status = login_user.get('status')
     
     if id and username and password:
-        new_user = Login(id=id, username=username, password=password, message = '', status = '')        
-        user = Login(id = 1, username = 'david', password = 'abcd123', message = '', status = '')
+        new_user = User(id=id, username=username, password=password, message = '', status = '')        
+        user = User(id = 1, username = 'david', password = 'abcd123', message = '', status = '')
         if new_user.username == user.username and new_user.password == user.password:
             res = jsonify({
                 "username": new_user.username,
@@ -69,11 +69,11 @@ def login():
     else:
         return make_response(jsonify({"message": "Please fill in username and password"})), 403
         
-@app.route('/api/auth/logout', methods=['GET', 'POST'])
+@app.route('/api/auth/logout', methods=['POST'])
 def logout():
     """tests user logout"""
 
-    user = Login(id=1,username='david', password='abcd123', message='', status='')
+    user = User(id=1,username='david', password='abcd123', message='', status='')
     if user:
         if user.password:
             response = jsonify({
@@ -84,15 +84,6 @@ def logout():
                 "status": "false"
             })
             return response
-
-@app.route('/api/auth/reset-password', methods=['POST'])
-def reset():
-    """tests user reset-password """
-
-    user = request.get_json(force=True)
-    username = user.get('username')
-    password = user.get('password')
-
     
 
     
@@ -126,4 +117,4 @@ def add_businesses():
 
 @app.route('/api/businesses/<business_id>', methods=['GET', 'POST'])
 def specific_business():
-    pass
+  pass
