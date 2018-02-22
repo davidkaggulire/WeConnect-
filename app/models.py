@@ -1,20 +1,16 @@
 #models.py
 
 
-class User(object):
-    def __init__(self, id, username, password):
+class Login(object):
+    def __init__(self, id, username, password, message, status):
         self.id = id
         self.username = username
         self.password = password
+        self.message = message
+        self.status = status
 
     def __str__(self):
         return "User(id='%s')" % self.id
-
-users = [
-    User(1, 'david', 'dave123'),
-    User(2, 'peter', 'pete123'),
-]
-
 
 class Business(object):
     def __init__(self, id, businessname, location, category, address, email, phonenumber):
