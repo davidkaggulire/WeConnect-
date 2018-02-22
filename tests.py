@@ -88,10 +88,10 @@ class UserTestCase(BaseTestCase):
     #     self.assertEqual(res.status_code, 201)
     #     self.assertIn("12345", str(res.data))
     
-	# def test_can_update_business(self):
-	# 	""" tests a business can be updated """
+    # def test_can_update_business(self):
+    #     """ tests a business can be updated """
     #     tester = app.test_client(self)
-    #     res = tester.post('/api/v1/businesses', data = json.dumps(self.business), content_type = 'application/json')
+    #     res = tester.post('/api/businesses', data = json.dumps(self.business), content_type = 'application/json')
     #     self.assertEqual(res.status_code, 201)
     #     new_data = {
     #         'id':'1',
@@ -102,7 +102,7 @@ class UserTestCase(BaseTestCase):
     #         'address':'P.O.Box 2334',
     #         'phonenumber':'0704895678'
     #     }
-    #     update_res = tester.put('/api/v1/businesses/1', data = json.dumps(new_data), content_type = 'application/json')
+    #     update_res = tester.put('/api/businesses/1', data = json.dumps(new_data), content_type = 'application/json')
     #     self.assertIn('Business updated successfully!', str(update_res.data))
     #     self.assertEqual(update_res.status_code, 200)
 
