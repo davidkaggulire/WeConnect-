@@ -5,3 +5,4 @@
 /.idea/
 runserver.pyc
 "app/*.pyc"
+"app/__pycache__/"
