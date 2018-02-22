@@ -90,24 +90,12 @@ def reset():
     """tests user reset-password """
 
     user = request.get_json(force=True)
-    id = user.get('id')
     username = user.get('username')
     password = user.get('password')
 
-    if id and username and password:
-        new_user = Login(id=id,username=username, password=password, message='', status='')
-        login = Login(id=1, username='david', password='abcd123', message='', status='')
-        if new_user.username == login.username and new_user.id == new_user.username:
-            response = jsonify({
-                "id":new_user.id,
-                "username": new_user.username,
-                "password": 12345,
-                "message": "logged in",
-                "status": "True"
-            })
-            response.status_code = 201
-            return response
+    
 
+    
 @app.route('/api/businesses', methods=['POST'])
 def add_businesses():
     """tests register business """
@@ -139,4 +127,3 @@ def add_businesses():
 @app.route('/api/businesses/<business_id>', methods=['GET', 'POST'])
 def specific_business():
     pass
-     
