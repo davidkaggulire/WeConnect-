@@ -1,6 +1,5 @@
 """ tests.py """
 from app import app
-from app.models import User
 # import unit test
 import unittest
 import json
@@ -25,8 +24,8 @@ class BaseTestCase(unittest.TestCase):
 
         self.login = {
             'id': '1',
-            'username':'frank',
-            'password':'abcd'
+            'username':'david',
+            'password':'abcd123'
         }
 
         self.business = {
@@ -49,30 +48,30 @@ class UserTestCase(BaseTestCase):
     def test_API_create_User(self):
         """Test API can create a User (POST request)"""
         tester = app.test_client(self)
-        res = tester.post('/api/auth/register', data= json.dumps(self.user))
+        res = tester.post('/api/auth/register', data= json.dumps(self.user), content_type='application/json')
         self.assertEqual(res.status_code, 201)
-        self.assertIn("female", str(res.data))
+        self.assertIn("user successfully added", str(res.data))
 
-    # def test_API_user_login(self):
-    #     """Test API can login(POST request) """
-    #     tester = app.test_client(self)
-    #     res = tester.post('/api/auth/login', data= json.dumps(self.login))
-    #     self.assertEqual(res.status_code, 201)
-    #     self.assertIn("female", str(res.data))
+    def test_API_user_login(self):
+        """Test API can login User (POST request) """
+        tester = app.test_client(self)
+        res = tester.post('/api/auth/login', data= json.dumps(self.login), content_type='application/json')
+        self.assertEqual(res.status_code, 201)
+        self.assertIn("successfully logged in", str(res.data))
 
     # def test_API_user_logout(self):
     #     """Test API can logout(POST request) """
     #     tester = app.test_client(self)
-    #     res = tester.post('/api/auth/login', data= json.dumps(self.login))
-    #     self.assertEqual(res.status_code, 201)
-    #     self.assertIn("frank", str(res.data))
+    #     res = tester.post('/api/auth/logut', data= json.dumps(self.login), content_type='application/json' )
+    #     self.assertEqual(res.status_code, 403)
+    #     self.assertIn("successfully logged out", str(res.data))
 
-    # def test_can_create_business(self):
-    #     """Test API can create Business(POST request) """
-    #     tester = app.test_client(self)
-    #     res = tester.post('/api/auth/register', data= json.dumps(self.business))
-    #     self.assertEqual(res.status_code, 201)
-    #     self.assertIn("Kagz", str(res.data))
+    def test_can_create_business(self):
+        """Test API can create Business(POST request) """
+        tester = app.test_client(self)
+        res = tester.post('/api/businesses', data= json.dumps(self.business), content_type='application/json' )
+        self.assertEqual(res.status_code, 201)
+        self.assertIn("successfully added business", str(res.data))
 
     # def test_can_update_business(self):
     #     """Test API can create Business(POST request) """
