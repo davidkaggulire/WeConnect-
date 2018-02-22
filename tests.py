@@ -80,12 +80,42 @@ class UserTestCase(BaseTestCase):
     #     self.assertEqual(res.status_code, 201)
     #     self.assertIn("Kagz", str(res.data))
 
-    def test_password_reset(self):
-        """Test API can create Business(POST request) """
-        tester = app.test_client(self)
-        res = tester.post('/api/auth/reset-password', data= json.dumps(self.login))
-        self.assertEqual(res.status_code, 201)
-        self.assertIn("12345", str(res.data))
+    # def test_password_reset(self):
+    #     """Test API can create Business(POST request) """
+
+    #     tester = app.test_client(self)
+    #     res = tester.post('/api/auth/reset-password', data= json.dumps(self.login), content_type = 'application/json')
+    #     self.assertEqual(res.status_code, 201)
+    #     self.assertIn("12345", str(res.data))
+    
+	# def test_can_update_business(self):
+	# 	""" tests a business can be updated """
+    #     tester = app.test_client(self)
+    #     res = tester.post('/api/v1/businesses', data = json.dumps(self.business), content_type = 'application/json')
+    #     self.assertEqual(res.status_code, 201)
+    #     new_data = {
+    #         'id':'1',
+    #         'businessname':'Davun',
+    #         'location': 'Kampala',
+    #         'category':'software',
+    #         'email':'kagz@gmail.com',
+    #         'address':'P.O.Box 2334',
+    #         'phonenumber':'0704895678'
+    #     }
+    #     update_res = tester.put('/api/v1/businesses/1', data = json.dumps(new_data), content_type = 'application/json')
+    #     self.assertIn('Business updated successfully!', str(update_res.data))
+    #     self.assertEqual(update_res.status_code, 200)
+
+
+	# def test_deleting_registered_business(self):
+	# 	""" tests a business can be deleted"""
+
+	# 	business_data = {'id': 1, 'business_name': 'demo'}
+	# 	rev = self.app.post('/api/v1/businesses', data = json.dumps(business_data), content_type = 'application/json')
+	# 	self.assertEqual(rev.status_code, 201)
+	# 	del_result = self.app.delete('/api/v1/businesses/1', content_type= 'application/json')
+	# 	self.assertEqual(del_result.status_code, 200)
+
 
 if __name__ == '__main__':
     unittest.main()
