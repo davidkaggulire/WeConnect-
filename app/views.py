@@ -60,7 +60,7 @@ def login():
                 "username": new_user.username,
                 "password": new_user.password,
                 "message":'successfully logged in',
-                'status': 'true'
+                "status": 'true'
             })
             res.status_code = 201
             return res
