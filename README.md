@@ -32,9 +32,9 @@ You can use nosetests to run the tests.py file.
 
 [![Build Status](https://travis-ci.org/davidkaggulire/WeConnect-.svg?branch=feature-challenge2)](https://travis-ci.org/davidkaggulire/WeConnect-)
 
-## Test Coverage with Code Climate
+## Test Coverage with Coveralls
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/davidkaggulire/WeConnect-/badge.svg?branch=feature-challenge2)](https://coveralls.io/github/davidkaggulire/WeConnect-?branch=feature-challenge2)
 
 ## Authors
 
