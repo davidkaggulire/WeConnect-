@@ -4,6 +4,7 @@ python:
 cache: pip
 
 install: 
+  - pip install coverage
   - pip install coveralls
   - pip install nosexcover
   - pip install -r requirements.txt 
