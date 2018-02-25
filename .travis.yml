@@ -6,4 +6,6 @@ cache: pip
 install: pip install -r requirements.txt
 
 # command to run tests
-script: nosetests tests.py 
+script: nosetests coveralls/tests.py 
+
+after_success: coveralls
