@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/davidkaggulire/WeConnect-.svg?branch=feature-challenge2)](https://travis-ci.org/davidkaggulire/WeConnect-)
+
+[![Coverage Status](https://coveralls.io/repos/github/davidkaggulire/WeConnect-/badge.svg?branch=feature-challenge2)](https://coveralls.io/github/davidkaggulire/WeConnect-?branch=feature-challenge2)
+
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/davidkaggulire/WeConnect-)
+
 # WeConnect-
 
 WeConnect provides a platform that brings businesses and individuals together. One can review and get information about a business and further create a business
@@ -27,18 +33,6 @@ You can use nosetests to run the tests.py file.
 ```
  nosetests tests.py
 ```
-
-## TravisCI
-
-[![Build Status](https://travis-ci.org/davidkaggulire/WeConnect-.svg?branch=feature-challenge2)](https://travis-ci.org/davidkaggulire/WeConnect-)
-
-## Reporting with Coveralls
-
-[![Coverage Status](https://coveralls.io/repos/github/davidkaggulire/WeConnect-/badge.svg?branch=feature-challenge2)](https://coveralls.io/github/davidkaggulire/WeConnect-?branch=feature-challenge2)
-
-## Code Climate
-
-[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/davidkaggulire/WeConnect-)
 
 ## Authors
 
