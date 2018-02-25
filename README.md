@@ -28,13 +28,17 @@ You can use nosetests to run the tests.py file.
  nosetests tests.py
 ```
 
-## Test Coverage with TravisCI
+## TravisCI
 
 [![Build Status](https://travis-ci.org/davidkaggulire/WeConnect-.svg?branch=feature-challenge2)](https://travis-ci.org/davidkaggulire/WeConnect-)
 
-## Test Coverage with Coveralls
+## Reporting with Coveralls
 
 [![Coverage Status](https://coveralls.io/repos/github/davidkaggulire/WeConnect-/badge.svg?branch=feature-challenge2)](https://coveralls.io/github/davidkaggulire/WeConnect-?branch=feature-challenge2)
+
+## Code Climate
+
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/davidkaggulire/WeConnect-)
 
 ## Authors
 
