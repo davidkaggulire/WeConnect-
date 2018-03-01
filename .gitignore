@@ -4,5 +4,7 @@
 /.vscode/
 /.idea/
 runserver.pyc
-"app/*.pyc"
-"app/__pycache__/"
+"api/*.pyc"
+"api/__pycache__/"
+"api/v1/__pycache__/"
+"api/v1/models/__pycache__/"
