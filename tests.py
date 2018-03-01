@@ -1,6 +1,6 @@
 """ tests.py """
 from api.v1 import app
-# import unit test
+# import unittest
 import unittest
 import json
 
@@ -12,9 +12,7 @@ class BaseTestCase(unittest.TestCase):
     def setUp(self):
         """Define test variables and initialize app."""
         # tester = app.test_client(self)
-
         self.user = {
-            "id": "1",
             "firstname": "christine",
             "lastname": "nakyobe",
             "username": "christine",
@@ -22,25 +20,53 @@ class BaseTestCase(unittest.TestCase):
             "password": "abcd",
             "gender": "female"
         }
+        # {
+            
+        #     "username": "christine",
+            
+        #     "password": "abcd"
+        # }
 
-        self.business = [{
-            "id":1,
+
+        # {
+        #     "firstname": "david",
+        #     "lastname": "kaggulire",
+        #     "username": "dkaggs",
+        #     "email": "dkaggulire@gmail.com",
+        #     "password": "hello",
+        #     "gender": "male"
+        # }
+
+# {
+#             "firstname": "abbey",
+#             "lastname": "brooks",
+#             "username": "abby",
+#             "email": "abbey@gmail.com",
+#             "password": "abey",
+#             "gender": "male"
+#         }
+
+        self.business = {
             "businessname":"Kagz",
-            "location": "Kampala",
             "category":"electronics",
             "email":"kagz@gmail.com",
-            "address":"P.O.Box 2334",
+            "address":"kampala",
             "description":"We sell electronics"
-        },
-        {
-            "id":2,
-            "businessname":"Bolts",
-            "location": "Kampala",
-            "category":"hardware",
-            "email":"bolts@gmail.com",
-            "address":"P.O.Box 2444",
-            "description":"We sell bolts, screws and nuts"
-        }]
+        }
+        # {
+        #     "businessname":"Frisk",
+        #     "category":"electronics",
+        #     "email":"frisk@gmail.com",
+        #     "address":"kampala",
+        #     "description":"We sell electronics"
+        # }
+        # {
+        #     "businessname":"Frisk",
+        #     "category":"electronics",
+        #     "email":"frisk@gmail.com",
+        #     "address":"mukono",
+        #     "description":"We sell electronics"
+        # }
         self.reviews = {
             'business_id':'1',
             'reviews': 'Great services'
@@ -63,12 +89,12 @@ class UserTestCase(BaseTestCase):
         self.assertEqual(res.status_code, 200)
         self.assertIn("User successfully logged in", str(res.data))
 
-    def test_API_user_logout(self):
-        """Test API can logout(POST request) """
-        tester = app.test_client(self)
-        res = tester.post('/api/v1/auth/logout', data= json.dumps(self.user), content_type='application/json' )
-        self.assertEqual(res.status_code, 200)
-        self.assertIn("You are now logged out", str(res.data))
+    # def test_API_user_logout(self):
+    #     """Test API can logout(POST request) """
+    #     tester = app.test_client(self)
+    #     res = tester.post('/api/v1/auth/logout', data= json.dumps(self.user), content_type='application/json' )
+    #     self.assertEqual(res.status_code, 200)
+    #     self.assertIn("User logged out", str(res.data))
 
     def test_can_create_business(self):
         """Test API can create Business(POST request) """
@@ -77,33 +103,33 @@ class UserTestCase(BaseTestCase):
         self.assertEqual(res.status_code, 201)
         self.assertIn("Business successfully created", str(res.data))
 
-    # def test_get_businesses(self):
-    #     """Test API get Business(GET request) """
-    #     tester = app.test_client(self)
-    #     res = tester.get('/api/v1/businesses')
-    #     self.assertEqual(res.status_code, 200)
-    #     self.assertIn("Kagz", str(res.data))
+    def test_get_businesses(self):
+        """Test API get Business(GET request) """
+        tester = app.test_client(self)
+        res = tester.get('/api/v1/businesses')
+        self.assertEqual(res.status_code, 200)
+        # self.assertIn("Kagz", str(res.data))
 
-    # def test_get_businesses_by_id(self):
-    #     """Test API can get Business by ID (GET request) """
-    #     tester = app.test_client(self)
-    #     res = tester.get('/api/v1/businesses/1')
-    #     self.assertEqual(res.status_code, 200)
-    #     # self.assertIn("Kagz", str(res.data))
+    def test_get_businesses_by_id(self):
+        """Test API can get Business by ID (GET request) """
+        tester = app.test_client(self)
+        res = tester.get('/api/v1/businesses/1')
+        self.assertEqual(res.status_code, 200)
+        # self.assertIn("Kagz", str(res.data))
     
-    # def test_can_update_business(self):
-    #     """ Test API can update business by id """
-    #     tester = app.test_client(self)
-    #     res = tester.put('/api/v1/businesses/1', data= json.dumps(self.business), content_type='application/json')
-    #     self.assertEqual(res.status_code, 200)     
+    def test_can_update_business(self):
+        """ Test API can update business by id """
+        tester = app.test_client(self)
+        res = tester.put('/api/v1/businesses/1', data= json.dumps(self.business), content_type='application/json')
+        self.assertEqual(res.status_code, 200)     
 
-    # def test_delete_business_by_id(self):
-    #     """ Test API can delete business by id """
-    #     tester = app.test_client(self)
-    #     # add_res = tester.post('/api/v1/business/1', data = json.dumps(self.business), content_type='application/json')
-    #     # self.assertEqual(add_res.status_code, 201)
-    #     res = tester.delete('/api/v1/businesses/1', content_type = 'application/json')
-    #     self.assertEqual(res.status_code, 200)
+    def test_delete_business_by_id(self):
+        """ Test API can delete business by id """
+        tester = app.test_client(self)
+        # add_res = tester.post('/api/v1/business/1', data = json.dumps(self.business), content_type='application/json')
+        # self.assertEqual(add_res.status_code, 201)
+        res = tester.delete('/api/v1/businesses/1', content_type = 'application/json')
+        self.assertEqual(res.status_code, 200)
 
     def test_password_reset(self):
         """Test API can create Business(POST request) """
@@ -126,25 +152,7 @@ class UserTestCase(BaseTestCase):
     #     self.assertEqual(res.status_code, 200)
     #     self.assertIn("Great services", str(res.data))
 
-    # def test_can_update_business(self):
-    #     """ tests a business can be updated """
-    #     tester = app.test_client(self)
-    #     res = tester.post('/api/businesses', data = json.dumps(self.business), content_type = 'application/json')
-    #     self.assertEqual(res.status_code, 201)
-    #     new_data = {
-    #         'id':'1',
-    #         'businessname':'Davun',
-    #         'location': 'Kampala',
-    #         'category':'software',
-    #         'email':'kagz@gmail.com',
-    #         'address':'P.O.Box 2334',
-    #         'phonenumber':'0704895678'
-    #     }
-    #     update_res = tester.put('/api/businesses/1', data = json.dumps(new_data), content_type = 'application/json')
-    #     self.assertIn('Business updated successfully!', str(update_res.data))
-    #     self.assertEqual(update_res.status_code, 200)
-
-
+   
 	# def test_deleting_registered_business(self):
 	# 	""" tests a business can be deleted"""
 

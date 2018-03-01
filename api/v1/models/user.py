@@ -1,11 +1,13 @@
 #models.py
-from flask import jsonify
+import uuid
+from flask import jsonify, session
+from werkzeug.security import generate_password_hash
 
-class User(object):
+class User():
     def __init__(self):
         self.user_list = []
 
-    def register(self, id, firstname, lastname, username, password, email, gender):
+    def register(self, firstname, lastname, username, password, email, gender):
         """ registers user if user doesnot exist """
         user_details = {}
 
@@ -13,40 +15,41 @@ class User(object):
             if user['username'] == username or user['email'] == email:        
                 return "Username or email exists"
         else:
-            user_details['id'] = id
+            user_details['id'] = uuid.uuid1()
             user_details['firstname'] = firstname
             user_details['lastname'] = lastname
             user_details['username'] = username
             user_details['password'] = password
             user_details['email'] = email
             user_details['gender'] = gender
-            
+            session['username'] = username
             self.user_list.append(user_details)        
             return "User successfully added"
 
     def login(self, username, password):
         """ login user given valid credentials """
         for user in self.user_list:
+            hashed_password = generate_password_hash(password)
             if user['username'] == username:
-                if user['password'] == password:
+                if user['password'] == hashed_password:
                     return "User successfully logged in"
                 else:
-                    return "Incorrect credentials"
-        return "User doesnot exist"
+                    return
+        return
 
     def password_reset(self, username, newpassword):
         for user in self.user_list:
             if user['username'] == username:
-                user['password'] = newpassword
+                hashed_password = generate_password_hash(newpassword)
+                # user['password'] = newpassword
+                user['password'] = hashed_password
                 return "Password reset successfully"
         else:
             return "Failed to reset"
 
-
-# class Reviews(object):
-#     def __init__(self, id, review):
-#         self.id = id
-#         self.review = review
-
-#     def __str_(self):
-#         return "Review (id = '%s') " % self.id
+    def logout(self, id):
+        """ logout user """
+        for user in self.user_list:
+            if user['id'] == id:
+                session.pop(user['username'], None)
+                return "User logged out"
