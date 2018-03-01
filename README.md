@@ -31,13 +31,16 @@ You can use nosetests to run the tests.py file.
 ```
  nosetests tests.py
 ```
+## UI
+
+https://davidkaggulire.github.io/WeConnect-/Designs/UI
 
 ## Authors
 
 * **David Kaggulire** *
 
-See also list of contributors[Peter Walugembe, Eric Malaba, Harriet Ayugi, Alvin Taremwa, Romin Kayira ]
+
 
 ## Acknowledgments
 
-Special thanks go to our LFA Collins Abitekaniza
+Special thanks go to our LFA Collins Abitekaniza, John Seremba
