@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/davidkaggulire/WeConnect-.svg?branch=feature-challenge2)](https://travis-ci.org/davidkaggulire/WeConnect-)
+[![Build Status](https://travis-ci.org/davidkaggulire/WeConnect-.svg?branch=feature-challenge2version2)](https://travis-ci.org/davidkaggulire/WeConnect-)
 [![Coverage Status](https://coveralls.io/repos/github/davidkaggulire/WeConnect-/badge.svg?branch=feature-challenge2)](https://coveralls.io/github/davidkaggulire/WeConnect-?branch=feature-challenge2)
 [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/davidkaggulire/WeConnect-)
 
