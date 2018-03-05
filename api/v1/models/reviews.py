@@ -16,7 +16,6 @@ class Reviews():
             reviews['new_review'] = new_review
             self.reviews_list.append(reviews)
             return "Successfully added review"
-shakira.seruwagi@andela.com
     def get_reviews(self, business_id):
         """ get reviews about business """
         for review in self.reviews_list:
