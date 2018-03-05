@@ -5,10 +5,35 @@ from flask import request, jsonify, make_response, session
 from api.v1.models.user import User
 from api.v1.models.business import Business
 from api.v1.models.reviews import Reviews
+import jwt
+import datetime
+from functools import wraps
 
 user_obj = User()
 business_obj = Business()
 review_obj = Reviews()
+
+def token_required(f):
+    @wraps(f)
+    def decorated (*args, **kwargs):
+        token = None
+
+        if 'x-access-token' in request.headers:
+            token = request.headers['x-access-token']
+
+        if not token:
+            return jsonify({"message": "Token is missing!"}), 401
+
+        try:
+            data = jwt.decode(token, app.config['SECRET_KEY'])
+            for user in user_obj.user_list:
+                   current_user = data[user['username']]
+        except:
+            return jsonify({'message': 'Token is invalid!'}), 401
+
+        return f(current_user, *args, **kwargs )
+    return decorated
+
 @app.route('/')
 @app.route('/home', methods=['GET','POST'])
 def home():
@@ -47,22 +72,41 @@ def login():
     login_user = request.get_json(force=True)      
     username = login_user.get('username')
     password = login_user.get('password')
-    hashed_password = generate_password_hash(password)
+    # hashed_password = generate_password_hash(password)
 
     if username == '' or password == '':
         message = "All fields required"
         return jsonify({"message": message})
 
+    # auth = request.authorization
+
+    # if not auth or not auth.username or not auth.password:
+    #     return make_response('Could not verify', 401, {'WWW-Authenitcate': 'LoginRequired'})
+
+    
+
     # login_res = user_obj.login(username, password)
     # if login_res:
     for user in user_obj.user_list:
-        if check_password_hash(user['password'], password):
-            return jsonify({"message": "User successfully logged in", "success": True})
+        # if not auth.username:
+        #     return make_response('Could not verify', 401, {'WWW-Authenitcate': 'LoginRequired'}) 
+        if check_password_hash(user['password'],password):
+            token = jwt.encode({
+                'id':user['username'],
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
+                }, app.config['SECRET_KEY'])
+            # "token": token.decode('UTF-8')
+            return jsonify({
+                "message": "User successfully logged in", 
+                "success": True
+                })
             
     else:
-        return make_response(jsonify({'message': 'Invalid username or password'})), 403   
+        return make_response(jsonify({'message': 'Invalid username or password', 
+    'WWW-authenticate': 'Login required!'})), 401   
         
-@app.route('/api/v1/auth/logout', methods=['POST'])
+@app.route('/api/v1/auth/logout', methods=['POST'])  
+# @token_required
 def logout():
     """ tests user logout """
     login_user = request.get_json(force=True)  
@@ -74,6 +118,7 @@ def logout():
         return make_response(jsonify({'message': 'Invalid username or password'})), 403   
 
 @app.route('/api/v1/auth/reset-password', methods=['POST'])
+# @token_required
 def password_reset():
     """ resets password of user """
     login_user = request.get_json(force=True)      
@@ -90,6 +135,7 @@ def password_reset():
             return jsonify({"message": "Unknown user"}), 200
     
 @app.route('/api/v1/businesses', methods=['POST', 'GET'])
+# @token_required
 def add_businesses():
     """ tests register business """
     if request.method == 'POST':
@@ -130,23 +176,27 @@ def specific_business(business_id):
             if business['id'] == business_id:
                 new_business = business_obj.get_business_by_id(business_id)
                 return jsonify(new_business)
+        else:
+            return "false"
 
     elif request.method == 'PUT':
         business_user = request.get_json(force = True)
-        businessname = business_user['businessname']
-        category = business_user['category']
-        email = business_user['email']
-        address = business_user['address']
-        description = business_user['description']
+        businessname = business_user.get('businessname')
+        category = business_user.get('category')
+        email = business_user.get('email')
+        address = business_user.get('address')
+        description = business_user.get('description')
 
         for business in business_obj.business_list:
             if business['id'] == business_id:
                 update_business = business_obj.update_business_by_id(businessname, 
                 category, address, email, description)
-                if update_business == "Business updated successfully":
-                    return jsonify(update_business), 200
-                else:
-                    return "none"    
+                # if update_business == "Business updated successfully":
+                #     return jsonify(update_business), 200
+                return jsonify({"message": "Business updated successfully"})
+        else:
+            return jsonify({"message": "Failed to update"})  
+                      
 
     elif request.method == 'DELETE':
         for business in business_obj.business_list:
