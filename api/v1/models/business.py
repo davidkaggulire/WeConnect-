@@ -32,7 +32,6 @@ class Business():
 
     def get_business_by_id(self, id ):
         """ getting business by id """
-        self.id = id
         for business in self.business_list:
             if business['id'] == id:
                 return business
@@ -57,10 +56,9 @@ class Business():
 
     def delete_business(self, id):
         """ Deletes business by id """
-        self.id = id
         for business in self.business_list:
             if business['id'] == id:
-                self.business_list.remove(id)
+                self.business_list.pop(business)
                 return "Business successfully deleted"
         else:
             return "User credentials needed"
