@@ -96,14 +96,14 @@ class UserTestCase(BaseTestCase):
     #     self.assertEqual(res.status_code, 200)
     #     self.assertIn("User logged out", str(res.data))
 
-    def test_can_create_business(self):
+    def test_can_create_business(self): # working well
         """Test API can create Business(POST request) """
         tester = app.test_client(self)
         res = tester.post('/api/v1/businesses', data= json.dumps(self.business), content_type='application/json' )
         self.assertEqual(res.status_code, 201)
         self.assertIn("Business successfully created", str(res.data))
 
-    def test_get_businesses(self):
+    def test_get_businesses(self): # working well
         """Test API get Business(GET request) """
         tester = app.test_client(self)
         res = tester.get('/api/v1/businesses')
@@ -128,10 +128,10 @@ class UserTestCase(BaseTestCase):
         tester = app.test_client(self)
         # add_res = tester.post('/api/v1/business/1', data = json.dumps(self.business), content_type='application/json')
         # self.assertEqual(add_res.status_code, 201)
-        res = tester.delete('/api/v1/businesses/1', content_type = 'application/json')
+        res = tester.delete('/api/v1/businesses/1', data = json.dumps(self.business), content_type = 'application/json')
         self.assertEqual(res.status_code, 200)
-
-    def test_password_reset(self):
+    
+    def test_password_reset(self):#password reset working well
         """Test API can create Business(POST request) """
         tester = app.test_client(self)
         res = tester.post('/api/v1/auth/reset-password', data= json.dumps(self.user), content_type = 'application/json')
